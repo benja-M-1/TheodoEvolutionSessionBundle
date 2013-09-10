@@ -58,9 +58,9 @@ zf1_namespaces parameter.
         bag_manager:
             class: Theodo\Evolution\Bundle\SessionBundle\Manager\ZendFramework1\BagManager
             configuration_class: Theodo\Evolution\Bundle\SessionBundle\Manager\ZendFramework1\BagConfiguration
-        zf1_namespaces:
-              - 'zf_namespace1'
-              - 'zf_namespace2'
+        namespaces:
+            - 'zf_namespace1'
+            - 'zf_namespace2'
 
 To access Zend session inside a Symfony controller use $this->get('session')->getBag('your_zend_namespace')->get('your_variable_name');
 (You must replace 'your_zend_namespace' and 'your_variable_name' with your own values).

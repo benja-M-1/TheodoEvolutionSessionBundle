@@ -25,24 +25,23 @@ class TheodoEvolutionSessionExtension extends Extension
         $this->loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/services'));
         $this->loader->load('session.xml');
 
-        $this->addBagManager($container, $configs);
+        $this->addBagManager($container, $config);
     }
 
     public function addBagManager($container, $configs)
     {
-        if(array_key_exists('zf1_namespaces',$configs[0]) && $configs[0]['zf1_namespaces'] != null)
-        {
-            $container->getDefinition('theodo_evolution.session.bag_manager_configuration')
-                ->addArgument($configs[0]['zf1_namespaces']);
-        }
+        $container
+            ->getDefinition('theodo_evolution.session.bag_manager_configuration')
+            ->addMethodCall('setNamespaces', $configs['namespaces'])
+        ;
 
         $container->setParameter(
             'theodo_evolution.session.bag_manager.class',
-            $configs[0]['bag_manager']['class']
+            $configs['bag_manager']['class']
         );
         $container->setParameter(
             'theodo_evolution.session.bag_manager_configuration.class',
-            $configs[0]['bag_manager']['configuration_class']
+            $configs['bag_manager']['configuration_class']
         );
     }
 }

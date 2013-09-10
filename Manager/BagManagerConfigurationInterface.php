@@ -13,6 +13,13 @@ interface BagManagerConfigurationInterface
     const CULTURE_NAMESPACE = 'culture_namespace';
 
     /**
+     * Set a list of session namespaces used by the legacy application.
+     *
+     * @param array $namespaces
+     */
+    public function setNamespaces(array $namespaces);
+
+    /**
      * Gets a list of all session namespaces used by application.
      * A session namespace is a key in $_SESSION array.
      *

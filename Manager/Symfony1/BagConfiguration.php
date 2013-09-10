@@ -23,6 +23,14 @@ class BagConfiguration implements BagManagerConfigurationInterface
     /**
      * {@inheritdoc}
      */
+    public function setNamespaces(array $namespaces)
+    {
+        $this->namespaces = $namespaces;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getNamespaces()
     {
         return $this->namespaces;
